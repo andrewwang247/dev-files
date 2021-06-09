@@ -1,0 +1,188 @@
+\documentclass[12pt]{article}
+
+% Packages to include in document.
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{parskip}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+\usepackage[noabbrev,capitalize,nameinlink]{cleveref}
+\usepackage[compact]{titlesec}
+\usepackage{amsthm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{wasysym}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage[b]{esvect}
+\usepackage{esint}
+\usepackage{letltxmacro}
+\usepackage[shortlabels]{enumitem}
+\usepackage{tikz-cd}
+\usepackage{xparse}
+\usepackage{physics}
+\usepackage{nccmath}
+\usepackage{siunitx}
+\usepackage{etoolbox}
+\usepackage{listings}
+\usepackage{centernot}
+\usepackage[useregional]{datetime2}
+\usepackage{caption}
+\usepackage{stmaryrd}
+\usepackage[nottoc,numbib]{tocbibind}
+
+% Reduce spacing around section labels and headers.
+\titlespacing{\section}{0pt}{*0}{*0}
+\titlespacing{\subsection}{0pt}{*0}{*0}
+\titlespacing{\subsubsection}{0pt}{*0}{*0}
+\setlength{\headheight}{15pt}
+\setlength{\headsep}{12pt}
+
+% Define listing environment format.
+\lstset{
+	basicstyle=\ttfamily,
+	numbers=left,
+	stepnumber=1,
+	mathescape=true,
+	showstringspaces=false,
+	tabsize=4,
+	breaklines=true,
+	breakatwhitespace=false
+}
+
+% amsthm definition style, numbering follows sections.
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{lemma}{Lemma}%[section]
+\newtheorem{corollary}{Corollary}[theorem]
+
+% Math operators to be typeset in roman font.
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\rng}{rng}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\mat}{Mat}
+\let\hom\relax
+\DeclareMathOperator{\hom}{Hom}
+\DeclareMathOperator{\gl}{GL}
+\DeclareMathOperator{\codim}{codim}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\cov}{Cov}
+\DeclareMathOperator{\varn}{Var}
+\DeclareMathOperator{\inter}{Int}
+\DeclareMathOperator{\exter}{Ext}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\divop}{div}
+\DeclareMathOperator{\curlop}{curl}
+\DeclareMathOperator{\gradop}{grad}
+\DeclareMathOperator{\vol}{Vol}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\rnk}{rank}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\ord}{ord}
+
+% Prefered symbols for certain items.
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\vec}{\vv}
+
+% Commonly used commands.
+\newcommand{\set}[1]{\ensuremath{\qty{#1}}}
+\newcommand{\suchthat}{\, \middle| \,}
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\C}{\ensuremath{\mathbb{C}}}
+\newcommand{\E}{\ensuremath{\mathbb{E}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\solution}{\emph{Solution.} }
+\newcommand{\inv}[1]{{#1}^{-1}}
+\newcommand{\biImplies}{\ensuremath{\Longleftrightarrow}}
+\newcommand{\given}{\,|\,}
+\newcommand{\restrict}[2]{\ensuremath{\left.#1\right|_{#2}}}
+\newcommand{\argmin}{\ensuremath{\mathop{\arg\min}\limits}}
+\newcommand{\argmax}{\ensuremath{\mathop{\arg\max}\limits}}
+\newcommand{\nimplies}{\ensuremath{\centernot\implies}}
+\newcommand{\multichoose}[2]{\ensuremath{\left(\kern-.3em\left(\genfrac{}{}{0pt}{}{#1}{#2}\right)\kern-.3em\right)}}
+\newcommand{\wrapbox}[1]{\fbox{\parbox{\textwidth}{#1}}}
+\newcommand{\supto}[1]{\ensuremath{\xrightarrow{\;#1\;}}}
+
+% Change fraction size based on context.
+\LetLtxMacro{\oldfrac}{\frac}
+\renewcommand{\frac}[2]{
+\mathchoice
+	{\oldfrac{#1}{#2}}		% display style
+	{\mfrac{#1}{#2}}		% text style
+	{\oldfrac{#1}{#2}}		% script style
+	{\oldfrac{#1}{#2}}		% script-script style
+}
+
+% Change binomial coefficient size based on context.
+\LetLtxMacro{\oldbinom}{\binom}
+\renewcommand{\binom}[2]{
+\mathchoice
+	{\oldbinom{#1}{#2}}		% display style
+	{\mbinom{#1}{#2}}		% text style
+	{\oldbinom{#1}{#2}}		% script style
+	{\oldbinom{#1}{#2}}		% script-script style
+}
+
+% Auto-resizing left and right delimiters.
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\anglebrack}{\langle}{\rangle}
+\DeclarePairedDelimiter{\doublebrack}{\llbracket}{\rrbracket}
+
+% Place index labels above and below, not to the right.
+\LetLtxMacro{\oldsum}{\sum}
+\renewcommand{\sum}{\oldsum\limits}
+\LetLtxMacro{\oldlim}{\lim}
+\renewcommand{\lim}{\oldlim\limits}
+\LetLtxMacro{\oldbigcup}{\bigcup}
+\renewcommand{\bigcup}{\oldbigcup\limits}
+\LetLtxMacro{\oldbigcap}{\bigcap}
+\renewcommand{\bigcap}{\oldbigcap\limits}
+\LetLtxMacro{\oldprod}{\prod}
+\renewcommand{\prod}{\oldprod\limits}
+\LetLtxMacro{\oldsup}{\sup}
+\renewcommand{\sup}{\oldsup\limits}
+\LetLtxMacro{\oldinf}{\inf}
+\renewcommand{\inf}{\oldinf\limits}
+\LetLtxMacro{\oldlimsup}{\limsup}
+\renewcommand{\limsup}{\oldlimsup\limits}
+\LetLtxMacro{\oldliminf}{\liminf}
+\renewcommand{\liminf}{\oldliminf\limits}
+\LetLtxMacro{\oldbigsqcup}{\bigsqcup}
+\renewcommand{\bigsqcup}{\oldbigsqcup\limits}
+\LetLtxMacro{\oldbigoplus}{\bigoplus}
+\renewcommand{\bigoplus}{\oldbigoplus\limits}
+\LetLtxMacro{\oldbigotimes}{\bigotimes}
+\renewcommand{\bigotimes}{\oldbigotimes\limits}
+\LetLtxMacro{\oldbigwedge}{\bigwedge}
+\renewcommand{\bigwedge}{\oldbigwedge\limits}
+\LetLtxMacro{\oldbigvee}{\bigvee}
+\renewcommand{\bigvee}{\oldbigvee\limits}
+\LetLtxMacro{\oldmax}{\max}
+\renewcommand{\max}{\oldmax\limits}
+\LetLtxMacro{\oldmin}{\min}
+\renewcommand{\min}{\oldmin\limits}
+
+% Augmented matrix definition. Usage:
+% \begin{(x)matrix}[cc|c]
+% 	1 & 2 & 3 \\
+%	4 & 5 & 6 \\
+% \end{(x)matrix}
+% where (x) can be p, b, v, etc.
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
