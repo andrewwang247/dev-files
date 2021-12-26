@@ -1,8 +1,8 @@
 # Dev Files
 
-A compilation of useful developer files for C++, Python, and LaTeX.
+A compilation of useful developer files for C++, Python, Java, and LaTeX.
 
-- `compile` directory: generic makefile and clang formatting.
+- `build` directory: generic makefiles and clang formatting.
 - `gitignore` directory: gitignores for various languages.
 - `rc` directory: `.*rc` files to configure CLI programs.
 - `static` directory: bash scripts for linting and static analysis.
