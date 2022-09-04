@@ -7,3 +7,4 @@ A compilation of useful developer files for C++, Python, Java, and LaTeX.
 - `rc` directory: `.*rc` files to configure CLI programs.
 - `static` directory: bash scripts for linting and static analysis.
 - `header.tex`: LaTeX header that sets up custom environment.
+- `update.py`: A Python script that updates all installed pip packages.
